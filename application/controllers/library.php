@@ -16,7 +16,10 @@ $this->load->model('editions_model');
 		$this->load->helper('url');
 
   }
-
+	/**
+	 * thisis the main page
+	 * @return [type] [description]
+	 */
 	public function index()
 	{
 
