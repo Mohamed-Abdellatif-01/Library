@@ -31,11 +31,9 @@ class items_model extends CI_Model {
 // search for books by name
   function showbookdetails($id) {
     $sql = " SELECT items.BookID, items.BookTittle, items.PublishingDate,
-     items.NumOfPages, items.Quantity, items.BestOfCollection, edition.EditionNum, edition.ISBN, edition.PrintDate,
-     GROUP_CONCAT( libauthors.AuthorName SEPARATOR ',') BookAuthors
-     FROM ( (library.bookauthor inner join library.items on bookauthor.BookID=items.BookID )
-      inner join library.libauthors on bookauthor.AuthorID=libauthors.AuthorID)
-     INNER JOIN library.edition on items.BookID=edition.BookID where items.BookID=$id group by items.BookID";
+     items.NumOfPages, items.Quantity, items.BestOfCollection, edition.EditionNum, edition.ISBN, edition.PrintDate
+     FROM items inner join edition on items.BookID=edition.BookID
+  where items.BookID=$id ";
     $query = $this->db->query($sql, $id);
     $results = array();
     foreach ($query->result() as $result) {
@@ -45,7 +43,17 @@ class items_model extends CI_Model {
   }
 
 
-  
+  function showbookauthordetails($id) {
+    $sql = "SELECT  GROUP_CONCAT( libauthors.AuthorName SEPARATOR ',') BookAuthors
+     FROM ( library.bookauthor inner join library.items on bookauthor.BookID=items.BookID )
+      inner join library.libauthors on bookauthor.AuthorID=libauthors.AuthorID where items.BookID=$id group by items.BookID ";
+    $query = $this->db->query($sql, $id);
+    $results = array();
+    foreach ($query->result() as $result) {
+      $results[] = $result;
+    }
+    return $results;
+  }
 
   function showbookdetailsgenre($id) {
     $sql = " select  GROUP_CONCAT( genre.GenreName SEPARATOR ',') Bookgenres from (library.items inner join library.genre_has_books on items.BookID=genre_has_books.BookID)

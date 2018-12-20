@@ -66,14 +66,14 @@ $this->load->helper('url');
 <div class="divTableRow">
 	<div class="divTableHead">Book ID</div>
 <div class="divTableHead">BookTittle</div>
+<div class="divTableHead">ISBN</div>
+<div class="divTableHead">Edition Num</div>
+<div class="divTableHead">Print Date</div>
+
 <div class="divTableHead">Number Of Pages</div>
 <div class="divTableHead">Publishing Date</div>
 <div class="divTableHead">Quantity</div>
 <div class="divTableHead">Best Of Collection</div>
-<div class="divTableHead">ISBN</div>
-
-<div class="divTableHead">Edition Num</div>
-<div class="divTableHead">Print Date</div>
 <div class="divTableHead">Author</div>
 <div class="divTableHead">Type</div>
 <div class="divTableHead">Genre</div>
@@ -92,15 +92,17 @@ $this->load->helper('url');
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA;">'.$item->BookID.'</div>';
 
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA;">'.$item->BookTittle.'</div>';
+				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->ISBN.'</div>';
+
+				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->EditionNum.'</div>';
+				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->PrintDate.'</div>';
+
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA;">'.$item->NumOfPages.'</div>';
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->PublishingDate.'</div>';
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->Quantity.'</div>';
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->BestOfCollection.'</div>';
 
-				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->ISBN.'</div>';
-				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->EditionNum.'</div>';
-       	echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->PrintDate.'</div>';
-        echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->BookAuthors.'</div>';
+        echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$itemauthors->BookAuthors.'</div>';
         echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$itemtype->Booktypes.'</div>';
         echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$itemgenre->Bookgenres.'</div>';
 				echo '<div class="divTableCell" style=" background-color:#D9F9FA"> <a href="'. base_url().'index.php/library/editbook/'.$item->BookID.'" />

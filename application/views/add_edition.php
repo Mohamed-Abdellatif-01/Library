@@ -57,7 +57,6 @@ $this->load->helper('url');
 	if(isset($result))
 	{
 		echo '<p  style="font-size: 2vw;" class="m-3">Edition added successfully to the book</p>';
-	echo	'<a href="'.base_url().'library/addeditionbyid" /><br><input type="button" value="+ Add edition " class="btn btn-primary	  mt-2" /></a>';
 
 	}
 	else {
@@ -76,7 +75,7 @@ $this->load->helper('url');
 
 
 
- <a href="<?php echo base_url();?>library/showallauthors" /><input type="button" value=" Back To All Authors >>" class="btn btn-success btn-block mt-5 col-md-6 offset-md-3" /></a>
+ <a href="<?php echo base_url();?>library/showallitems" /><input type="button" value=" Back To All books >>" class="btn btn-success btn-block mt-5 col-md-6 offset-md-3" /></a>
  <a href="<?php echo base_url();?>library/mainpage" /><input type="button" value=" Back To mainpage >>" class="btn btn-success btn-block mt-2 col-md-6 offset-md-3" /></a>
  <a href="<?php echo base_url();?>library/logout" /><input type="button" value="Logout" class="btn btn-danger btn-block mt-3 col-md-4 offset-md-4"/></a>
 

@@ -120,6 +120,9 @@ public function show_items_details($id)
 			$data = array();
 			$data['itemdetails'] = $result;
 
+
+	$result = $this->items_model->showbookauthordetails($id);
+	$data['itemauthors'] = array_pop($result);
 			$result = $this->items_model->showbookdetailsgenre($id);
 			$data['itemgenre'] = array_pop($result);
 
@@ -150,6 +153,16 @@ if($this->input->post("ISBN") || $this->input->post("EditionNum")
 }
 }
 
+
+
+public function delete_edition_by_isbn($id)
+{
+	$result = $this->items_model->deletebook($id);
+
+	redirect('/library/showallitems');
+
+
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //add book
 public function add_book()
