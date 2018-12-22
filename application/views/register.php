@@ -79,6 +79,7 @@ $this->load->helper('url');
 		  </form>';
 	}
 	?>
+	
 	<a href="<?php echo base_url();?>library/mainpage" /><input type="button" value=" Back To mainpage >>" class="btn btn-success btn-block mt-4 col-md-6 offset-md-3" /></a>
 	<a href="<?php echo base_url();?>library/logout" /><input type="button" value="Logout" class="btn btn-danger btn-block mt-2 mt-2 col-md-4 offset-md-4" /></a>
 
