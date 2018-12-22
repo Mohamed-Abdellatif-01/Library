@@ -220,7 +220,7 @@ public function add_book_result()
 	{
 		if($this->input->post("BookTittle	") || $this->input->post("NumOfPages")
 		|| $this->input->post("PublishingDate") || $this->input->post("Quantity")
-		|| $this->input->post("BestOfCollection")|| $this->input->post("ISBN")
+		|| $this->input->post("BestOfCollection")|| $this->input->post("EditionID")|| $this->input->post("ISBN")
 		|| $this->input->post("EditionNum")|| $this->input->post("PrintDate")
 		|| $this->input->post("TypeID")|| $this->input->post("AuthorID")
 		|| $this->input->post("GenreID")|| $this->input->post("BookID"))

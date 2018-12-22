@@ -58,7 +58,7 @@ $this->load->helper('url');
 	if(isset($result))
 	{
 		echo '<p  style="font-size: 2vw;" class="m-3">Genre added successfully</p>';
-	echo	'<a href="'.base_url().'library/add_author" /><br><input type="button" value="+ Add Genre " class="btn btn-primary	  mt-2" /></a>';
+	echo	'<a href="'.base_url().'library/add_genre" /><br><input type="button" value="+ Add Genre " class="btn btn-primary	  mt-2" /></a>';
 
 	}
 	else {

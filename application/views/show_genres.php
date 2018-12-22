@@ -47,7 +47,6 @@ $this->load->helper('url');
 <div class="divTable">
 <div class="divTableHeading">
 <div class="divTableRow">
-<div class="divTableHead">Genre ID</div>
 <div class="divTableHead">Genre Name</div>
 <div class="divTableHead">delete</div>
 
@@ -59,7 +58,6 @@ $this->load->helper('url');
 			foreach ($genre as $genre) {
 
 				echo '<div class="divTableRow">';
-				echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;" >'.$genre->GenreID.'</div>';
 				echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;">'.$genre->GenreName.'</div>';
 echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;"><a href="'. base_url().'index.php/library/delete_genre/'.$genre->GenreID.'">delete</a></div>';
 

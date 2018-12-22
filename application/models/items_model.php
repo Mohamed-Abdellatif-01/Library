@@ -277,13 +277,14 @@ $this->db->insert('genre_has_books', $data);
     $isbn = $this->input->post("ISBN");
     $edition = $this->input->post("EditionNum");
     $print = $this->input->post("PrintDate");
-
+    $editionid=$this->input->post("EditionID");
 
     $sql = "update edition
-    set ISBN=$isbn,
+    set
+    ISBN=$isbn,
     EditionNum=$edition,
     PrintDate='$print'
-    where BookID=$id";
+    where EditionID=$editionid";
     $query = $this->db->query($sql);
 
 

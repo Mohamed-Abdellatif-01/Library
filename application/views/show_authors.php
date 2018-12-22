@@ -43,7 +43,6 @@ background-size: cover;
 <div class="divTable">
 <div class="divTableHeading">
 <div class="divTableRow">
-<div class="divTableHead">Author ID</div>
 <div class="divTableHead">Author Name</div>
 <div class="divTableHead"> Delete</div>
 
@@ -56,7 +55,6 @@ background-size: cover;
 			foreach ($libauthors as $author) {
 
 				echo '<div class="divTableRow">';
-				echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;">'.$author->AuthorID.'</div>';
 				echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;">'.$author->AuthorName.'</div>';
 				echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;"><a href="'. base_url().'index.php/library/delete_author/'.$author->AuthorID.'">Delete</a></div>';
 
