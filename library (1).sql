@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 14, 2018 at 08:47 PM
+-- Generation Time: Dec 28, 2018 at 04:48 PM
 -- Server version: 5.6.34-log
 -- PHP Version: 7.2.1
 
@@ -41,7 +41,16 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`AccountID`, `UserName`, `Password`, `FirstName`, `LastName`) VALUES
-(1, 'admin', '123', 'mohamed', 'ahmed');
+(1, 'admin', '123', 'mohamed', 'abdellateef'),
+(2, 'mohamed', '123', 'Mohamed', 'Ahmed'),
+(4, 'mohamed1', '123', 'Mohamed', 'Ahmed'),
+(5, 'sdad', '123', 'modsam', 'fdnsl'),
+(6, 'sdad2', '213', 'modsam', 'fdnsl'),
+(7, 'ewqewq', 'ewq', 'Mohamed', 'Ahmed'),
+(8, 'das', 'dsa', 'dsa', 'dsa'),
+(10, 'mohamed12', '12345', 'mohamed', 'ahmed'),
+(14, 'mohamed113', '123', 'Mohamed', 'Ahmed'),
+(15, 'dsa', 'das', 'dsa', '');
 
 -- --------------------------------------------------------
 
@@ -59,18 +68,17 @@ CREATE TABLE `bookauthor` (
 --
 
 INSERT INTO `bookauthor` (`BookID`, `AuthorID`) VALUES
-(10, 3),
-(11, 3),
-(10, 4),
-(11, 4),
-(14, 4),
-(9, 5),
-(11, 5),
-(13, 5),
-(14, 5),
-(11, 6),
+(7, 6),
+(9, 6),
 (13, 6),
-(14, 6);
+(5, 7),
+(7, 7),
+(9, 7),
+(13, 7),
+(5, 8),
+(6, 8),
+(8, 8),
+(8, 9);
 
 -- --------------------------------------------------------
 
@@ -88,11 +96,16 @@ CREATE TABLE `books_has_type` (
 --
 
 INSERT INTO `books_has_type` (`BookID`, `TypeID`) VALUES
-(9, 1),
-(10, 1),
-(14, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(13, 1),
+(5, 2),
+(6, 2),
+(7, 2),
+(8, 2),
 (9, 2),
-(10, 2);
+(13, 2);
 
 -- --------------------------------------------------------
 
@@ -101,6 +114,7 @@ INSERT INTO `books_has_type` (`BookID`, `TypeID`) VALUES
 --
 
 CREATE TABLE `edition` (
+  `EditionID` int(11) NOT NULL,
   `ISBN` bigint(20) NOT NULL,
   `EditionNum` int(11) NOT NULL,
   `BookID` int(11) NOT NULL,
@@ -111,12 +125,14 @@ CREATE TABLE `edition` (
 -- Dumping data for table `edition`
 --
 
-INSERT INTO `edition` (`ISBN`, `EditionNum`, `BookID`, `PrintDate`) VALUES
-(12222, 1, 11, '0000-00-00'),
-(321321321, 1, 14, '0000-00-00'),
-(1111111111111, 1, 9, '0000-00-00'),
-(23132133331111, 1, 13, '0000-00-00'),
-(111111111111111, 1, 10, '2018-12-29');
+INSERT INTO `edition` (`EditionID`, `ISBN`, `EditionNum`, `BookID`, `PrintDate`) VALUES
+(9, 2321312313332, 1, 5, '2018-10-03'),
+(14, 11111111111111111, 1, 6, '2018-12-07'),
+(15, 5154651, 1, 7, '2017-12-31'),
+(16, 5145616512, 1, 8, '2016-12-30'),
+(17, 65461320, 1, 9, '2015-09-27'),
+(18, 321321, 1, 11, '2018-12-01'),
+(20, 23321321312, 1, 13, '2018-12-01');
 
 -- --------------------------------------------------------
 
@@ -134,11 +150,9 @@ CREATE TABLE `genre` (
 --
 
 INSERT INTO `genre` (`GenreID`, `GenreName`) VALUES
-(1, 'dsadsadsa'),
-(2, 'mamamam'),
-(3, 'ddddddd'),
-(4, 'action'),
-(5, 'comedy');
+(1, 'action'),
+(3, 'romantic'),
+(5, 'horror');
 
 -- --------------------------------------------------------
 
@@ -156,15 +170,15 @@ CREATE TABLE `genre_has_books` (
 --
 
 INSERT INTO `genre_has_books` (`BookID`, `GenreID`) VALUES
-(10, 1),
-(11, 1),
-(14, 1),
-(10, 2),
-(11, 2),
-(9, 4),
-(9, 5),
-(13, 5),
-(14, 5);
+(5, 1),
+(6, 1),
+(7, 1),
+(13, 1),
+(5, 3),
+(6, 3),
+(7, 3),
+(8, 3),
+(9, 3);
 
 -- --------------------------------------------------------
 
@@ -186,11 +200,14 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`BookID`, `BookTittle`, `NumOfPages`, `PublishingDate`, `Quantity`, `BestOfCollection`) VALUES
-(9, 'dsadsadas', 324, '0000-00-00', 222, ''),
-(10, 'dsadsadas', 324, '2018-12-29', 222, 'on'),
-(11, 'dsadsadas', 324, '0000-00-00', 222, 'on'),
-(13, 'aaasddsddssdds', 212, '0000-00-00', 21, ''),
-(14, 'dsadsadsadsa', 2121, '0000-00-00', 21, 'on');
+(5, 'Harry Potter', 324, '2018-12-14', 22, ''),
+(6, 'fndsjnf', 324, '2018-12-13', 22, ''),
+(7, 'fewjdfdskln', 3215, '2016-09-29', 55, 'on'),
+(8, 'mfdknlsfdslkn', 651654, '2015-10-28', 121, ''),
+(9, 'fkdfdsnk', 54546, '2013-10-29', 52, NULL),
+(10, 'fdsfds', 54851, '0000-00-00', 0, NULL),
+(11, 'dsadsa', 21312, '2018-12-13', 22, NULL),
+(13, 'dsadsa', 21312, '2018-12-13', 22, NULL);
 
 -- --------------------------------------------------------
 
@@ -208,10 +225,10 @@ CREATE TABLE `libauthors` (
 --
 
 INSERT INTO `libauthors` (`AuthorID`, `AuthorName`) VALUES
-(3, 'dsdsadscza'),
-(4, 'dsa'),
-(5, 'abdalla ashraf'),
-(6, 'dsadsadsa');
+(6, 'mohamed'),
+(7, 'AHMED'),
+(8, 'Ashraf'),
+(9, 'abdalla');
 
 -- --------------------------------------------------------
 
@@ -229,8 +246,10 @@ CREATE TABLE `type` (
 --
 
 INSERT INTO `type` (`TypeID`, `NameOfType`) VALUES
-(1, 'E-Book'),
-(2, 'Printed Book');
+(1, 'Printed Book'),
+(2, 'E-Book'),
+(3, 'CD'),
+(4, 'DVD');
 
 --
 -- Indexes for dumped tables
@@ -261,7 +280,8 @@ ALTER TABLE `books_has_type`
 -- Indexes for table `edition`
 --
 ALTER TABLE `edition`
-  ADD PRIMARY KEY (`ISBN`),
+  ADD PRIMARY KEY (`EditionID`),
+  ADD UNIQUE KEY `ISBN_UNIQUE` (`ISBN`),
   ADD KEY `fk_edition_Items1` (`BookID`);
 
 --
@@ -303,7 +323,12 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `AccountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `AccountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `edition`
+--
+ALTER TABLE `edition`
+  MODIFY `EditionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `genre`
 --
@@ -313,17 +338,17 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `BookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `BookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `libauthors`
 --
 ALTER TABLE `libauthors`
-  MODIFY `AuthorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `AuthorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `type`
 --
 ALTER TABLE `type`
-  MODIFY `TypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `TypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --

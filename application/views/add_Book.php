@@ -49,9 +49,52 @@ $this->load->helper('url');
 	            alert( "Please provide Number of pages greater than 0!" );
 	            return false;
 	         }
+					 if( document.forms["addbook"]["PublishingDate"].value == "" )
+					{
+						 alert( "Please provide publishing date!" );
+						 return false;
+					}
+					 if( document.forms["addbook"]["Quantity"].value <= 0 )
+					 {
+							alert( "Please provide Quantity greater than 0!" );
+							return false;
+					 }
 
-
-
+					 if( document.forms["addbook"]["Quantity"].value == "" )
+					 {
+							alert( "Please provide quantity!" );
+							return false;
+					 }
+					 if( document.forms["addbook"]["EditionNum"].value == "" )
+					 {
+							alert( "Please provide edition number!" );
+							return false;
+					 }
+					 if( document.forms["addbook"]["EditionNum"].value <= 0 )
+					{
+						 alert( "Please provide edition number greater than 0!" );
+						 return false;
+					}
+					 if( document.forms["addbook"]["ISBN"].value == "" )
+					 {
+							alert( "Please provide ISBN !" );
+							return false;
+					 }
+					 if( document.forms["addbook"]["ISBN"].value <= 0 )
+					{
+						 alert( "Please provide ISBN greater than 0!" );
+						 return false;
+					}
+					 if( document.forms["addbook"]["PrintDate"].value == "" )
+					 {
+							alert( "Please provide Print date!" );
+							return false;
+					 }
+					 if( document.forms["addbook"]["AuthorID"].value == "" )
+					 {
+							alert( "Please provide author !" );
+							return false;
+					 }
 	      }
 	   //-->
 	</script>
@@ -63,18 +106,18 @@ $this->load->helper('url');
 	<div><h1 style="font-size: 4vw; text-align: center; color: #fff" class="m-3">Add Book</h1>	</div>
 	<form name="addbook" action="<?php echo base_url(); ?>index.php/library/add_book_result" onsubmit="return validateForm()" method="post">
 
-	<p style="color: #fff; font-size: 16pt"> Book Title:</p>  <input type="text" name="BookTittle" placeholder="Book title" class=" btn-block  mt-2"><br><br>
-	<p style="color: #fff; font-size: 16pt"> Number Of Pages:</p> <input type="text" name="NumOfPages" placeholder="Number of pages" class=" btn-block  mt-2"><br><br>
+	<p style="color: #fff; font-size: 16pt"> Book Title:</p>  <input type="text" name="BookTittle" pattern="[A-Za-z\s]{1,15}" title="no numbers allowed" placeholder="Book title" class=" btn-block  mt-2"><br><br>
+	<p style="color: #fff; font-size: 16pt"> Number Of Pages:</p> <input type="text" name="NumOfPages" pattern="[0-9]+" title="no letters allowed" placeholder="Number of pages" class=" btn-block  mt-2"><br><br>
 	 <p style="color: #fff; font-size: 16pt">Publishing Date:</p> <input type="date" name="PublishingDate"><br><br>
-	 <p style="color: #fff; font-size: 16pt">Quantity:<p> <input type="text" name="Quantity" placeholder="Number of books" class=" btn-block  mt-2"><br>
+	 <p style="color: #fff; font-size: 16pt">Quantity:<p> <input type="text" name="Quantity" pattern="[0-9]+" title="no letters allowed" placeholder="Number of books" class=" btn-block  mt-2"><br>
 <div>
 	 <p style="color: #fff; font-size: 16pt">Best Of Collection:</p>
 
 	  <input type="radio" name="BestOfCollection" value"Best"/><p1 style="color: #fff; font-size: 12pt">Best</p1><br>
 		<input type="radio" name="BestOfCollection" value=""/><p1 style="color: #fff; font-size: 12pt">Not Best</p1><br><br>
 </div>
-	<p style="color: #fff; font-size: 16pt"> EditionNum:</p> <input type="text" name="EditionNum" placeholder="Edition number" class=" btn-block  mt-2"><br><br>
-	 <p style="color: #fff; font-size: 16pt">ISBN:</p> <input type="text" name="ISBN" placeholder="ISBN for edition" class=" btn-block  mt-2"><br><br>
+	<p style="color: #fff; font-size: 16pt"> EditionNum:</p> <input type="text" name="EditionNum" pattern="[0-9]+" title="no letters allowed" placeholder="Edition number" class=" btn-block  mt-2"><br><br>
+	 <p style="color: #fff; font-size: 16pt">ISBN:</p> <input type="text" name="ISBN" pattern="[0-9]+" title="no letters allowed" placeholder="ISBN for edition" class=" btn-block  mt-2"><br><br>
 	 <p style="color: #fff; font-size: 18pt">PrintDate:</p> <input type="date" name="PrintDate" ><br><br>
 
 <div style="color: #E1E18E;">
@@ -83,7 +126,7 @@ $this->load->helper('url');
 echo '<br><p style="color: #fff; font-size: 18pt"> Author </p>';
 	foreach ($authorslist as $libauthor)
 	{
-		echo '<input type="checkbox" name="libauthors[]" class="list-inline" value="'.$libauthor->AuthorID.'"> '.$libauthor->AuthorName.'<br>';
+		echo '<input type="checkbox" name="libauthors[]" class="list-inline"  value="'.$libauthor->AuthorID.'"> '.$libauthor->AuthorName.'<br>';
 	}
 
 		 echo '<br><p style="color: #fff; font-size: 18pt"> Type </p>';

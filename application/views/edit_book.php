@@ -44,12 +44,21 @@ $this->load->helper('url');
 	            alert( "Please provide number of pages!" );
 	            return false;
 	         }
-					 if( document.forms["addbook"]["NumOfPages"].value < 0 )
+					 if( document.forms["addbook"]["NumOfPages"].value <= 0 )
 	         {
 	            alert( "Please provide Number of pages greater than 0!" );
 	            return false;
 	         }
-
+					 if( document.forms["addbook"]["Quantity"].value <= 0 )
+					 {
+							alert( "Please provide Quantity greater than 0!" );
+							return false;
+					 }
+					 if( document.forms["addbook"]["Quantity"].value == "" )
+					 {
+							alert( "Please provide quantity!" );
+							return false;
+					 }
 
 	      }
 	   //-->
@@ -62,18 +71,15 @@ $this->load->helper('url');
 	<div><h1 style="font-size: 3vw; text-align: center; color: #fff" class="m-3">Edit Book || <?php echo $items->BookTittle?> ||</h1>	</div>
 	<form name="addbook" action="<?php echo base_url(); ?>index.php/library/updatebook" onsubmit="return validateForm()" method="post">
 
-	<p style="color: #fff; font-size: 16pt"> Book Title:</p>  <input type="text" name="BookTittle" value="<?php echo $items->BookTittle ?>" placeholder="Book title" class=" btn-block  mt-2"><br><br>
-	<p style="color: #fff; font-size: 16pt"> Number Of Pages:</p> <input type="text" name="NumOfPages" value="<?php echo $items->NumOfPages ?>" placeholder="Number of pages" class=" btn-block  mt-2"><br><br>
+	<p style="color: #fff; font-size: 16pt"> Book Title:</p>  <input type="text" name="BookTittle" pattern="[A-Za-z\s]{1,15}" title="no numbers allowed" value="<?php echo $items->BookTittle ?>" placeholder="Book title" class=" btn-block  mt-2"><br><br>
+	<p style="color: #fff; font-size: 16pt"> Number Of Pages:</p> <input type="text" name="NumOfPages" pattern="[0-9]+" title="no letters allowed" value="<?php echo $items->NumOfPages ?>" placeholder="Number of pages" class=" btn-block  mt-2"><br><br>
 	 <p style="color: #fff; font-size: 16pt">Publishing Date:</p> <input type="date" name="PublishingDate" value="<?php echo $items->PublishingDate ?>" ><br><br>
-	 <p style="color: #fff; font-size: 16pt">Quantity:<p> <input type="text" name="Quantity" value="<?php echo $items->Quantity ?>" placeholder="Number of books" class=" btn-block  mt-2"><br>
+	 <p style="color: #fff; font-size: 16pt">Quantity:<p> <input type="text" name="Quantity" pattern="[0-9]+" title="no letters allowed" value="<?php echo $items->Quantity ?>" placeholder="Number of books" class=" btn-block  mt-2"><br>
 	 <p style="color: #fff; font-size: 16pt">Best Of Collection:</p>
 	 <div>
 	  <input type="radio" name="BestOfCollection" value"Best"><p1 style="color: #fff; font-size: 12pt">Best</p1><br>
-		<input type="radio" name="BestOfCollection" value=""><p1 style="color: #fff; font-size: 12pt">normal</p1><br><br>
+		<input type="radio" name="BestOfCollection" value="no"><p1 style="color: #fff; font-size: 12pt">normal</p1><br><br>
 </div>
-	<p style="color: #fff; font-size: 16pt"> EditionNum:</p> <input type="text" name="EditionNum" value="<?php echo $items->EditionNum ?>" placeholder="Edition number" class=" btn-block  mt-2"><br><br>
-	 <p style="color: #fff; font-size: 16pt">ISBN:</p> <input type="text" name="ISBN" value="<?php echo $items->ISBN ?>" placeholder="ISBN for edition" class=" btn-block  mt-2"><br><br>
-	 <p style="color: #fff; font-size: 18pt">PrintDate:</p> <input type="date" name="PrintDate" value="<?php echo $items->PrintDate ?>" ><br><br>
 
 <div style="color: #E1E18E;">
 	<?php

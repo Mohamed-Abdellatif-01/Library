@@ -41,6 +41,26 @@ $this->load->helper('url');
 	            return false;
 	         }
 
+				  if( document.forms["add_edition"]["EditionNum"].value == "" )
+				  {
+			  alert( "Please provide edition number !" );
+		    return false;
+			   }
+			 if( document.forms["add_edition"]["PrintDate"].value == "" )
+			 	{
+				 alert( "Please provide print date !" );
+				 return false;
+			 	}
+				if( document.forms["add_edition"]["ISBN"].value <= 0 )
+		 		{
+		 		 alert( "Please provide ISBN greater than 0!" );
+		 		 return false;
+		 		}
+				if( document.forms["add_edition"]["EditionNum"].value <= 0 )
+				{
+				 alert( "Please provide edition number greater than 0!" );
+				 return false;
+				}
 
 	      }
 	   //-->
@@ -61,8 +81,8 @@ $this->load->helper('url');
 	}
 	else {
 		echo '<form name="add_edition" action="'. base_url().'index.php/library/add_edition_by_id_result" onsubmit="return validateForm()" method="post">
-		 <p style="color: #fff; font-size: 18pt" > ISBN:</p> <input type="text" name="ISBN" class=" btn-block  mt-2 col-md-8 offset-md-2" placeholder="ISBN number">
-      <p style="color: #fff; font-size: 18pt" > Edition number:</p> <input type="text" name="EditionNum" class=" btn-block  mt-2 col-md-8 offset-md-2" placeholder="Edition number number">
+		 <p style="color: #fff; font-size: 18pt" > ISBN:</p> <input type="text" name="ISBN"  pattern="[0-9]+" title="no letters allowed" class=" btn-block  mt-2 col-md-8 offset-md-2" placeholder="ISBN number">
+      <p style="color: #fff; font-size: 18pt" > Edition number:</p> <input type="text" name="EditionNum"  pattern="[0-9]+" title="no letters allowed" class=" btn-block  mt-2 col-md-8 offset-md-2" placeholder="Edition number number">
       <p style="color: #fff; font-size: 18pt" > Print date:</p> <input type="date" name="PrintDate" class=" btn-block  mt-2 col-md-8 offset-md-2" placeholder="Print date">
       <br><br>';
 

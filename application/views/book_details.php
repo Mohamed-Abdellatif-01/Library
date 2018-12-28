@@ -64,7 +64,6 @@ $this->load->helper('url');
 <div class="divTable">
 <div class="divTableHeading">
 <div class="divTableRow">
-	<div class="divTableHead">Book ID</div>
 <div class="divTableHead">BookTittle</div>
 <div class="divTableHead">ISBN</div>
 <div class="divTableHead">Edition Num</div>
@@ -80,6 +79,7 @@ $this->load->helper('url');
 <div class="divTableHead">Edit</a></div>
 <div class="divTableHead">Delete</a></div>
 <div class="divTableHead">Add edition</a></div>
+<div class="divTableHead">delete edition</a></div>
 
 </div>
 </div>
@@ -89,7 +89,6 @@ $this->load->helper('url');
 			foreach ($itemdetails as $item) {
 
 				echo '<div class="divTableRow">';
-				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA;">'.$item->BookID.'</div>';
 
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA;">'.$item->BookTittle.'</div>';
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->ISBN.'</div>';
@@ -110,6 +109,7 @@ $this->load->helper('url');
         </a></div>';
 				echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;"><a href="'. base_url().'index.php/library/delete_book/'.$item->BookID.'"><img src="https://lh3.googleusercontent.com/GU4LpUJEQLsJS7JXYT9G_-0gtYB54ZR2jw6___SdOoIamCk0fOGJjGajjSYvlTMF9w31MCVylHK47kG-0JEqva0CQGHTu1eh4G6P3_hBHj1iqDfbDPIroFXJjhD5lbNWF6zBZe1PIVzkE81_2xXqws2c3Dvc5oN6oYlInopvDNjUyi54Lxzb1GLRkf_zQgVEUsou0CdulppgoZdu5lI1MbZcx-CJv7DveZdZ8hN-nJ1stFM-s2SeuVhOMapH8epSHZu0Y1miNwQXE_gKORDDsLU_sFRHLxsJRy68ViM_CcmoeAZlficFQZ1O9xw0pnlMSuoNQtsYPOs7J2fCGEE14gel9iLVlu4ptbzUuQzNMy0A6s8qLasMMiYeueCP9SQD_C-eaC5-K9DCRuZ3ghUUIeT7InKs1V1589mnPqHAFbP8z-TI6r-Jrtl1Z-kA2zih4fZ2L6qMsZAvTpBRk3HxH2VutXQLo9GZd-eeJoIfqfynr4-K3Es4k-ciKUIpXaxwJEVu430BLmo4iqSjL6Qun6cFnt4Xev2zAt6s2y1lhh0DGO0bZyGqPc_g0WzVi9wHwy_YzJpbsLzoBuT6XmnOFxQTtTSmLUaetXaAToXHzu-bbTOyTlVL7KWsRM_3n0EqYXk8xkvUaIQJHjBbkQ3OushU=s32-no"/></a></div>';
 				echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;"><a href="'. base_url().'index.php/library/addeditionbyid/'.$item->BookID.'">Add edition</a></div>';
+				echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;"><a href="'. base_url().'index.php/library/delete_edition_by_editionid/'.$item->EditionID.'">Delete edition</a></div>';
 
 
 

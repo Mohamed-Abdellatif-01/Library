@@ -31,7 +31,7 @@ class items_model extends CI_Model {
 // search for books by name
   function showbookdetails($id) {
     $sql = " SELECT items.BookID, items.BookTittle, items.PublishingDate,
-     items.NumOfPages, items.Quantity, items.BestOfCollection, edition.EditionNum, edition.ISBN, edition.PrintDate
+     items.NumOfPages, items.Quantity, items.BestOfCollection, edition.EditionNum, edition.ISBN, edition.PrintDate, edition.EditionID
      FROM items inner join edition on items.BookID=edition.BookID
   where items.BookID=$id ";
     $query = $this->db->query($sql, $id);
@@ -80,14 +80,7 @@ class items_model extends CI_Model {
 
 
   function searchItemsByName($BookTittle) {
-    $sql = "SELECT * FROM (((((
-      (bookauthor inner join items on bookauthor.BookID=items.BookID )
-      inner join libauthors on bookauthor.AuthorID=libauthors.AuthorID)
-      inner join genre_has_books on genre_has_books.BookID=items.BookID)
-      inner join genre on genre_has_books.GenreID=genre.GenreID)
-      INNER JOIN books_has_type ON books_has_type.BookID=items.BookID)
-      INNER JOIN type ON books_has_type.TypeID=type.TypeID)
-      INNER JOIN edition on items.BookID=edition.BookID where BookTittle LIKE '%{$BookTittle}%'";
+    $sql = " select * from items where BookTittle LIKE '%{$BookTittle}%'";
     $query = $this->db->query($sql, $BookTittle);
     $results = array();
     foreach ($query->result() as $result) {
@@ -96,6 +89,16 @@ class items_model extends CI_Model {
     return $results;
   }
 
+    function searchItemsByAuthor($AuthorName) {
+      $sql = " SELECT * FROM ( library.items inner join library.bookauthor on items.BookID=bookauthor.BookID )
+      inner join library.libauthors on bookauthor.AuthorID=libauthors.AuthorID WHERE AuthorName LIKE '%{$AuthorName}%'";
+      $query = $this->db->query($sql, $AuthorName);
+      $results = array();
+      foreach ($query->result() as $result) {
+        $results[] = $result;
+      }
+      return $results;
+    }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // get genre for book by id
@@ -274,18 +277,7 @@ $this->db->insert('genre_has_books', $data);
     $query = $this->db->query($sql);
 
 
-    $isbn = $this->input->post("ISBN");
-    $edition = $this->input->post("EditionNum");
-    $print = $this->input->post("PrintDate");
-    $editionid=$this->input->post("EditionID");
 
-    $sql = "update edition
-    set
-    ISBN=$isbn,
-    EditionNum=$edition,
-    PrintDate='$print'
-    where EditionID=$editionid";
-    $query = $this->db->query($sql);
 
 
     $sql = "delete from bookauthor where BookID = $id";

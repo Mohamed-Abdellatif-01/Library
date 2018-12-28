@@ -27,12 +27,28 @@ background-size: cover;
 }
 </style>
 
+<script type="text/javascript">
+	 <!--
+			// Form validation code will come here.
+			function validateForm()
+			{
+
+				 if( document.forms["searchauthor"]["AuthorName"].value == "" )
+				 {
+						alert( "Please provide author name !" );
+						return false;
+				 }
+			}
+	 //-->
+</script>
 </head>
 <body>
 	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
 			<div><h1  style="font-size: 4vw; text-align: center; color: #fff" class="m-3">All Authors</h1></div>
 
-				<form action="<?php echo base_url(); ?>library/search_author_by_name" method="post" >
+				<form  name="searchauthor" action="<?php echo base_url(); ?>library/search_author_by_name" method="post" onsubmit="return validateForm()" >
 				<p style="color: #fff; font-size: 18pt;" class=" btn-block  mt-2"> Search:</p> <input type="search" name="AuthorName" placeholder="Author name">
 				 <input type="submit" value="Search" class="btn btn-info btn-sm ">
 				</form><br>
@@ -65,7 +81,8 @@ background-size: cover;
 </div>
 <a href="<?php echo base_url();?>library/mainpage" /><br><input type="button" value=" Back To mainpage >>" class="btn btn-success  mt-2" /></a>
 <a href="<?php echo base_url();?>library/logout" /><br><input type="button" value="Logout" class="btn btn-danger  mt-2" /></a>
-
+</div>
+</div>
 </div>
 </body>
 </html>

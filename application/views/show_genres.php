@@ -30,13 +30,30 @@ $this->load->helper('url');
 		</style>
 
 
+		<script type="text/javascript">
+			 <!--
+					// Form validation code will come here.
+					function validateForm()
+					{
+
+						 if( document.forms["searchgenre"]["GenreName"].value == "" )
+						 {
+								alert( "Please provide genre name !" );
+								return false;
+						 }
+					}
+			 //-->
+		</script>
 
 </head>
 <body>
 	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+
 <div><h1  style="font-size: 4vw; text-align: center; color: #fff" class="m-3">All genres</h1></div>
 
-<form action="<?php echo base_url(); ?>library/search_genre_by_name" method="post" >
+<form name="searchgenre" action="<?php echo base_url(); ?>library/search_genre_by_name" method="post" onsubmit="return validateForm()" >
  <p style="color: #fff; font-size: 18pt;" class=" btn-block  mt-2">Search:</p> <input type="text" name="GenreName" placeholder="Genre name">
  <input type="submit" value="Search" class="btn btn-info btn-sm ">
 </form><br>
@@ -59,7 +76,7 @@ $this->load->helper('url');
 
 				echo '<div class="divTableRow">';
 				echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;">'.$genre->GenreName.'</div>';
-echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;"><a href="'. base_url().'index.php/library/delete_genre/'.$genre->GenreID.'">delete</a></div>';
+				echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;"><a href="'. base_url().'index.php/library/delete_genre/'.$genre->GenreID.'">delete</a></div>';
 
 				echo '</div>';
 			}
@@ -69,6 +86,8 @@ echo '<div class="divTableCell" style="color: #000000; background-color:#DEDEA2;
 <a href="<?php echo base_url();?>library/mainpage" /><br><input type="button" value=" Back To mainpage >>"  class="btn btn-success  mt-2" /></a>
 <a href="<?php echo base_url();?>library/logout" /><br><input type="button" value="Logout"  class="btn btn-danger  mt-2" /></a>
 
+</div>
+</div>
 </div>
 </body>
 </html>

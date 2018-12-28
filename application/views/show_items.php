@@ -61,7 +61,15 @@ $this->load->helper('url');
  <input type="submit" value="Search"  class="btn btn-primary btn-sm">
 </form><br>
 
-<div class="divTable">
+<?php
+ if(isset($items))
+ {
+	 if(count($items) == 0)
+	 {
+		 echo '<div style="color: #fff; font-size: 18pt;">No results found.</div>';
+	 }
+	 else {
+echo '<div class="divTable">
 <div class="divTableHeading">
 <div class="divTableRow">
 	<div class="divTableHead">Book ID</div>
@@ -70,15 +78,7 @@ $this->load->helper('url');
 <div class="divTableHead">Publishing Date</div>
 <div class="divTableHead">Quantity</div>
 <div class="divTableHead">Best Of Collection</div>
-<?php //<div class="divTableHead">Edition Num</div>
-//<div class="divTableHead">Print Date</div>
-//<div class="divTableHead">Author</div>
-//<div class="divTableHead">Type</div>
-//<div class="divTableHead">Genre</div>
-//<div class="divTableHead">Details</a></div>
-?>
 <div class="divTableHead">Details</a></div>
-
 <div class="divTableHead">Edit</a></div>
 <div class="divTableHead">Delete</a></div>
 <div class="divTableHead">Add edition</a></div>
@@ -86,9 +86,9 @@ $this->load->helper('url');
 
 </div>
 </div>
-<div class="divTableBody">
+<div class="divTableBody">';}
 
-      <?php
+
 			foreach ($items as $item) {
 
 				echo '<div class="divTableRow">';
@@ -97,15 +97,9 @@ $this->load->helper('url');
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA;">'.$item->BookTittle.'</div>';
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA;">'.$item->NumOfPages.'</div>';
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->PublishingDate.'</div>';
-			//*	echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->EditionNum.'</div>';
-     //*	echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->PrintDate.'</div>';
         echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->Quantity.'</div>';
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->BestOfCollection.'</div>';
 				echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA"><a href="'. base_url().'index.php/library/show_items_details/'.$item->BookID.'"><img src="https://lh3.googleusercontent.com/oYX842b9wBKTo63sGg3EvnrUqx_3g1AE99mQEAER-kesIdqQoWiUAJ7TGEa99ckML_rZcpoIn9RXZ6Pi5KeKhUzEQEk8EZKJQW_sDCJVL1n5h-sF3kMjHLidQ9wyNhoGCsbaD-WGgctF3BqA-zQIl-nEHw2GsSTjlvna20zLLbL5P13dDcym8Z0BL4Ot_C8IekJW16te_2dg65s9cxQVd79dt6JoN1ruwIqO0U6WOF2rQPcOSmT7u1hKTmAPYedMW6QvZsUWtWL5WTeTFQPEA7KLNGGAn6kX4VQFEpf6s6wL_EAaUkSGnByP54flO-PhOplo70WAhiCBwbj1zi_ZbJhqwzCqoFoE_d8ciRYP0fiFf87vU83VZ75mzlf_26NDFMnEhqTQKce_TCMXiCvcFM1wz0m4Mllw6lFlhBMOAU1b46UwcaGRkuCklKcJrr6KoAfXf9Cp_wdWHPnEtKF4txTEVjCv0j2VCc6b3dSPgd6WVdDuGeR2jZYTFDWnfZ1OGmXPm3_GqClxPaXxRjesIC6vwvFuV09o7XwHnoQOZmNig7rIoaS2NDLERgS2MAyvLUZof_uHysZ9uKL6qR2eF-T1Xht6yMOkGGnPn50Zspe68e9BAgpMY_IXMdb7qPIRIkSudafRdOzerXMLtQAu2XHC=s32-no"/></a></div>';
-      //* echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->AuthorName.'</div>';
-      //*  echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->NameOfType.'</div>';
-      //*  echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->GenreName.'</div>';
-			//*	echo '<div class="divTableCell"  style="color: #000000; background-color:#D9F9FA">'.$item->ISBN.'</div>';
 				echo '<div class="divTableCell" style=" background-color:#D9F9FA"> <a href="'. base_url().'index.php/library/editbook/'.$item->BookID.'">
 				<img src="https://lh3.googleusercontent.com/PWdAD0Dhj_P2908ls8UUiog5T9zM7lKQzfrLGrACBc90BAKj_kyKEgj1HjYfEV5Fn8xFUmHIBee-3UOma-V4D4MXxAGqoZ74TXrjtZBk1Hu9_984F3VUd2KpPjeBEUGZCRWM-cohqG4yq41BtArJJJ37a2u7XEfYVRa_zR6PGWEkTf_ffxK8qpMeyYB0513Tvdv7vwblmC6a-l8OTQhVVChWCTpOucsmqAIT20mssV_j_xFXdvk8Y-FgieTAOH5nlC9V2UrJcwFk65vzD8LCEgQoSvbvd_efNbXVzKqyb2dvV2nz2wCPeqBvHQjmKTuIgiuVnmGVu-ofXviEcmHqSS_IFxxSvG1g_JE4nis-jGbukZOzuZMPwwn4rdJnKJDJXfVkkeLKGzRxQoI5tJzv3MRoJ-NTN1Ege9xrnPjdU1EjUO8hBfYOgnPIOp1PcUdWzcXfA_Hq9FsKx1hlOlpEjS4rOSX_pq9hUfWOSZWsgENVwEQwTDtYt-laqLlOZZoZezr68zLRg-se6mjHO6fSIKQh3y3djmdKM-cPT0J9-RMDsRTP38f3hUs1pDD0lpABrMt06pSlhdEfKu5-JOnTv1sSoPDWv9Uj7nEuioYdNzgplZIEFCvPVz9d_skUDvXApwV2nwHHdIcSaZPH9W6MgNXD=s64-no"/>
         </a>
@@ -118,6 +112,7 @@ $this->load->helper('url');
 
 				echo '</div>';
 			}
+		}
 			?>
 		</div>
 </div>

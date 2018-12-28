@@ -28,37 +28,49 @@ background-size: cover;
 }
 </style>
 
+<script type="text/javascript">
+	 <!--
+			// Form validation code will come here.
+			function validateForm()
+			{
+
+				 if( document.forms["searchauthor"]["AuthorName"].value == "" )
+				 {
+						alert( "Please provide author name !" );
+						return false;
+				 }
+			}
+	 //-->
+</script>
 
 </head>
 <body>
 
-
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
 
 
 <div><h1  style="font-size: 4vw; text-align: center; color: #fff" class="m-3">Search for Authors</h1></div>
-<a href="<?php echo base_url();?>index.php/library/showallauthors"><input type="button" value="All Authors"/></br></a><br><br>
-<form action="<?php echo base_url(); ?>library/search_author_by_name" method="post" >
- Search: <input type="text" name="AuthorName"><br>
- <input type="submit" value="Go">
+<form  name="searchauthor" action="<?php echo base_url(); ?>library/search_author_by_name" method="post" onsubmit="return validateForm()" >
+<p style="color: #fff; font-size: 18pt;" class=" btn-block  mt-2"> Search:</p> <input type="search" name="AuthorName" placeholder="Author name">
+ <input type="submit" value="Search" class="btn btn-info btn-sm ">
 </form><br>
-
-
 <?php
  if(isset($libauthors))
  {
 	 if(count($libauthors) == 0)
 	 {
-		 echo "no results found";
+		 echo '<div style="color: #00000; font-size: 18pt;">No results found.</div>';
 	 }
 	 else {
 	 	echo '<div><h1>Search result</h1></div>
 	  <div class="divTable">
 	  <div class="divTableHeading">
 	  <div class="divTableRow">
-    <div class="divTableHead">Author ID</div>
     <div class="divTableHead">Author Name</div>
 		<div class="divTableHead"> Delete</div>
-		
+
 
 	  </div>
 	  </div>
@@ -67,10 +79,9 @@ background-size: cover;
 
 	  			foreach ($libauthors as $author) {
 
-	  				echo '<div class="divTableRow">';
-            echo '<div class="divTableCell">'.$author->AuthorID.'</div>';
-    				echo '<div class="divTableCell">'.$author->AuthorName.'</div>';
-						echo '<div class="divTableCell"><a href="'. base_url().'index.php/library/delete_author/'.$author->AuthorID.'">Delete</a></div>';
+	  				echo '<div class="divTableRow"  style="color: #000000; background-color:#DEDEA2;">';
+    				echo '<div class="divTableCell"  style="color: #000000; background-color:#DEDEA2;">'.$author->AuthorName.'</div>';
+						echo '<div class="divTableCell"  style="color: #000000; background-color:#DEDEA2;"><a href="'. base_url().'index.php/library/delete_author/'.$author->AuthorID.'">Delete</a></div>';
 
 	  				echo '</div>';
 	  			}
@@ -79,9 +90,12 @@ background-size: cover;
 
 	}
  ?>
- <a href="<?php echo base_url();?>library/showallauthors" /><br><input type="button" value=" Back To All Authors >>" /></a>
- <a href="<?php echo base_url();?>library/mainpage" /><br><input type="button" value=" Back To mainpage >>" /></a>
-<a href="<?php echo base_url();?>library/logout" /><input type="button" value="Logout" /></a>
+ <a href="<?php echo base_url();?>library/showallauthors" /><br><input type="button" value=" Back To All Authors >>" class="btn btn-success  mt-2" /></a>
+ <a href="<?php echo base_url();?>library/mainpage" /><br><input type="button" value=" Back To mainpage >>" class="btn btn-success  mt-2" /></a><br>
+<a href="<?php echo base_url();?>library/logout" /><input type="button" value="Logout" class="btn btn-danger  mt-2"/></a>
 
+</div>
+</div>
+</div>
 </body>
 </html>

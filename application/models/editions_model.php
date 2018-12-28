@@ -22,7 +22,11 @@ class editions_model extends CI_Model {
     return 1;
     }
 
-
+    function deleteeditionbyeeditionid($id) {
+      $sql = "delete from edition where EditionID = $id";
+    $query = $this->db->query($sql);
+      return 1;
+      }
 
 
 }

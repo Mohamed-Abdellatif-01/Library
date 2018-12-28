@@ -30,6 +30,8 @@ body{
         <div class="col-md-8 offset-md-2">
           <h3 style="font-size: 4vw; text-align: center; color: #fff" class="m-3">Welcome To Municipality Library</h3>
           <a href="<?php echo base_url();?>index.php/library/showallitems"><input type="button" value="All Books" class="btn btn-success btn-block mt-2 col-md-8 offset-md-2 btn-lg"/></a>
+          <a href="<?php echo base_url();?>library/search_items_by_authorname"> <input type="Submit" Value="Search book by author" class="btn btn-success btn-block mt-2 col-md-8 offset-md-2 btn-lg"/></a>
+
           <a href="<?php echo base_url();?>index.php/library/showallauthors"><input type="button" value="All Authors" class="btn btn-success btn-block mt-2 col-md-8 offset-md-2 btn-lg"/></a>
           <a href="<?php echo base_url();?>index.php/library/showallgenres"><input type="button" value="All Genres" class="btn btn-success btn-block mt-2 col-md-8 offset-md-2 btn-lg"/></a>
           <a href="<?php echo base_url();?>index.php/library/add_book"><input type="button" value="Add Book" class="btn btn-info btn-block mt-2 col-md-8 offset-md-2 btn-lg"/></a>

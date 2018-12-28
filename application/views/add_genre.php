@@ -64,7 +64,7 @@ $this->load->helper('url');
 	else {
 		echo '<form name="addgenre" action="'. base_url().'index.php/library/add_genre" onsubmit="return validateForm()" method="post">
 
-		 <p style="color: #fff; font-size: 18pt" >Genre Name:</p>  <input type="text" name="GenreName" class=" btn-block  mt-2 col-md-8 offset-md-2" placeholder="Genre Name"><br><br>';
+		 <p style="color: #fff; font-size: 18pt" >Genre Name:</p>  <input type="text" name="GenreName"  pattern="[A-Za-z\s]{1,15}" title="no numbers allowed" class=" btn-block  mt-2 col-md-8 offset-md-2" placeholder="Genre Name"><br><br>';
 
      echo '<input type="submit" value="Submit"  class="btn btn-primary btn-block  mt-2 col-md-8 offset-md-2">
     		  </form>';

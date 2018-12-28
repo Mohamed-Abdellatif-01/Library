@@ -63,7 +63,7 @@ $this->load->helper('url');
 	else {
 		echo '<form name="addauthor" action="'. base_url().'index.php/library/add_author" onsubmit="return validateForm()" method="post">
 
-		 <p style="color: #fff; font-size: 18pt" >Author Name:</p> <input type="text" name="AuthorName" class=" btn-block  mt-2 col-md-8 offset-md-2" placeholder="Author Name"><br><br>';
+		 <p style="color: #fff; font-size: 18pt" >Author Name:</p> <input type="text" name="AuthorName"  pattern="[A-Za-z\s]{1,15}" title="no numbers allowed" class=" btn-block  mt-2 col-md-8 offset-md-2" placeholder="Author Name"><br><br>';
 
      echo '<input type="submit" value="Submit" class="btn btn-primary btn-block  mt-2 col-md-8 offset-md-2">
     		  </form>';
